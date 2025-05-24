@@ -1,14 +1,12 @@
 import os
 import argparse
 import torch
-import torch.nn as nn
 import torch.optim as optim
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
-import numpy as np
 
 from model import ImageTextRankingModel
-from data_loader import get_dataloader, prepare_flickr8k
+from data_flows.data_loader import get_dataloader, prepare_flickr8k
 
 def contrastive_loss(similarity, labels=None):
     """

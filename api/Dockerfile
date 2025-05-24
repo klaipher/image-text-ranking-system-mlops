@@ -3,12 +3,12 @@ FROM python:3.13-slim
 WORKDIR /app
 
 # Install dependencies
-COPY requirements.txt .
+COPY ../model/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir fastapi uvicorn python-multipart
 
 # Copy application code
-COPY . .
+COPY .. .
 
 # Create models directory if it doesn't exist
 RUN mkdir -p models

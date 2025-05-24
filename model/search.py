@@ -5,10 +5,9 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 from transformers import AutoTokenizer
-from torchvision import transforms
 
 from model import ImageTextRankingModel
-from data_loader import Flickr8KDataset
+from data_flows.data_loader import Flickr8KDataset
 
 def search_images(args):
     # Set device

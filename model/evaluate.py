@@ -3,10 +3,9 @@ import argparse
 import torch
 import numpy as np
 from tqdm import tqdm
-from sklearn.metrics import accuracy_score
 
 from model import ImageTextRankingModel
-from data_loader import get_dataloader
+from data_flows.data_loader import get_dataloader
 
 def compute_metrics(similarities, labels=None):
     """
