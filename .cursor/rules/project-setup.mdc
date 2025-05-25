@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Always use the uv package manager, version 0.7 or higher, for all Python projects.
+The Python version must be 3.12.
+
+Dependecies version should be:
+torch 2.7+
+transformers 4.52+
+airflow 3+
+
+If you need more information about any package or dependency, use Context7 to look up the latest documentation or compatibility details.
+Use specs.md to read about project I'm doing and remind you about specs.

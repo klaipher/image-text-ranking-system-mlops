@@ -29,7 +29,7 @@ app.add_middleware(
 )
 
 # Constants
-MODEL_PATH = os.environ.get("MODEL_PATH", "models/best_model.pth")
+MODEL_PATH = os.environ.get("MODEL_PATH", "models/final_model.pth")
 EMBEDDING_DIM = int(os.environ.get("EMBEDDING_DIM", "512"))
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else 
                      "mps" if torch.backends.mps.is_available() else 
@@ -57,7 +57,7 @@ async def startup_event():
         
         # Load model weights
         if os.path.exists(MODEL_PATH):
-            checkpoint = torch.load(MODEL_PATH, map_location=DEVICE)
+            checkpoint = torch.load(MODEL_PATH, map_location=DEVICE, )
             model.load_state_dict(checkpoint['model_state_dict'])
             model.to(DEVICE)
             model.eval()

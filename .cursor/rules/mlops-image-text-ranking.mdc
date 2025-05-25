@@ -1,0 +1,50 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# MLOps Image-Text Ranking Project Rule
+
+## Project Overview
+- Implements a dual-encoder image-text ranking system for searching images by text queries.
+- Designed for M1 MacBook Pro, optimized for MPS acceleration.
+- Dataset: Flickr8K (8,000 images, 5 captions each), downloaded from Hugging Face ([jxie/flickr8k](https://huggingface.co/datasets/jxie/flickr8k)).
+- Key requirements and metrics are detailed in [specs.md](mdc:specs.md).
+
+## Project Structure
+- Source code in [src/](mdc:src/)
+  - [config.py](mdc:src/config.py): Configuration for model, data, and training
+  - [data/dataset.py](mdc:src/data/dataset.py): Data loading, processing, and Hugging Face integration
+  - [models/encoders.py](mdc:src/models/encoders.py): Image and text encoders, dual-encoder logic
+  - [training/trainer.py](mdc:src/training/trainer.py): Training loop, MLflow integration
+  - [training/metrics.py](mdc:src/training/metrics.py): Recall@K, MRR, and other metrics
+  - [inference/predictor.py](mdc:src/inference/predictor.py): Inference and ranking API
+- Main scripts:
+  - [train.py](mdc:train.py): Training entry point
+  - [inference_demo.py](mdc:inference_demo.py): Demo and inference
+  - [test_setup.py](mdc:test_setup.py): Setup and verification tests
+  - [test_hf_dataset.py](mdc:test_hf_dataset.py): Hugging Face dataset access test
+- Documentation:
+  - [README.md](mdc:README.md): Full documentation
+  - [QUICKSTART.md](mdc:QUICKSTART.md): Quick start guide
+
+## Best Practices
+- Use Python 3.12 and the `uv` package manager (0.7+).
+- All dependencies are managed in [pyproject.toml](mdc:pyproject.toml).
+- Dataset is automatically downloaded from Hugging Face; no Kaggle dependency.
+- Use MLflow for experiment tracking and model versioning.
+- Always test setup with [test_setup.py](mdc:test_setup.py) after changes.
+- For new datasets or model architectures, update config and data processing logic accordingly.
+- Follow the code structure for adding new features (see README and specs).
+- For troubleshooting, see the Troubleshooting sections in [README.md](mdc:README.md) and [QUICKSTART.md](mdc:QUICKSTART.md).
+
+## Key Specs
+- Target Recall@10 > 40%, inference < 500ms, training < 2 hours.
+- Model: MobileNetV3 Small (image), LSTM (text), contrastive loss.
+- Data splits: 60% train, 20% val, 20% test.
+- All code and data paths are relative to the `model/` directory.
+
+## Cursor Usage
+- Reference this rule for project structure, dataset/model details, and best practices when developing new features, debugging, or integrating with API/MLflow/Airflow components.
+
+
