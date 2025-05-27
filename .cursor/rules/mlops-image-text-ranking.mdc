@@ -1,18 +1,18 @@
 ---
-description:
-globs:
-alwaysApply: false
+description: 
+globs: 
+alwaysApply: true
 ---
 # MLOps Image-Text Ranking Project Rule
 
 ## Project Overview
 - Implements a dual-encoder image-text ranking system for searching images by text queries.
 - Designed for M1 MacBook Pro, optimized for MPS acceleration.
-- Dataset: Flickr8K (8,000 images, 5 captions each), downloaded from Hugging Face ([jxie/flickr8k](https://huggingface.co/datasets/jxie/flickr8k)).
+- Dataset: Flickr8K (8,000 images, 5 captions each), downloaded from Hugging Face ([jxie/flickr8k](mdc:https:/huggingface.co/datasets/jxie/flickr8k)).
 - Key requirements and metrics are detailed in [specs.md](mdc:specs.md).
 
 ## Project Structure
-- Source code in [src/](mdc:src/)
+- Source code in [src/](mdc:src)
   - [config.py](mdc:src/config.py): Configuration for model, data, and training
   - [data/dataset.py](mdc:src/data/dataset.py): Data loading, processing, and Hugging Face integration
   - [models/encoders.py](mdc:src/models/encoders.py): Image and text encoders, dual-encoder logic

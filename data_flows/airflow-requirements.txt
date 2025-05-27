@@ -1,5 +1,0 @@
-minio>=7.1.0
-requests>=2.28.0
-python-dotenv>=1.0.0
-apache-airflow-providers-standard>=1.0.0
-apache-airflow-providers-fab>=1.0.0 
