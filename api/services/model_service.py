@@ -2,23 +2,17 @@
 Model service for handling inference operations.
 """
 
-import os
-import sys
-import torch
-import numpy as np
-import asyncio
-import time
-from pathlib import Path
-from typing import List, Dict, Any, Optional
-from datetime import datetime
 import logging
+import time
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-# Add model src to path
-sys.path.append('/app/model/src')
+import numpy as np
+from src.config import data_config, model_config
+from src.inference.predictor import create_predictor, ImageTextRankingPredictor
 
-from inference.predictor import ImageTextRankingPredictor, create_predictor
-from config import model_config, data_config
-from models.schemas import ModelInfo, RankingResult
+from api_models.schemas import ModelInfo, RankingResult
 
 logger = logging.getLogger(__name__)
 
@@ -57,15 +51,15 @@ class ModelService:
                 logger.warning(f"Model file not found: {model_path}")
                 # Try alternative paths
                 alt_paths = [
-                    "/app/model/models/final_model.pt",
-                    "/app/models/final_model.pt",
+                    "/model/models/final_model.pt",
                     "./models/final_model.pt"
                 ]
+                logger.error(f"Trying alternative paths: {alt_paths}")
                 
                 for alt_path in alt_paths:
                     if Path(alt_path).exists():
                         model_path = alt_path
-                        logger.info(f"Found model at alternative path: {model_path}")
+                        logger.error(f"Found model at alternative path: {model_path}")
                         break
                 else:
                     logger.error("No trained model found. Please train a model first.")

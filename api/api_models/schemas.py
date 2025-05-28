@@ -2,8 +2,9 @@
 Pydantic schemas for API request and response models.
 """
 
-from typing import List, Dict, Any, Optional
 from datetime import datetime
+from typing import Any, Dict, List, Optional
+
 from pydantic import BaseModel, Field, validator
 
 
@@ -39,7 +40,7 @@ class TrainingRequest(BaseModel):
     experiment_name: str = Field(default="api_training", description="MLflow experiment name")
     run_name: Optional[str] = Field(default=None, description="MLflow run name")
     save_checkpoints: bool = Field(default=True, description="Save training checkpoints")
-    
+
     @validator('run_name', pre=True, always=True)
     def set_run_name(cls, v, values):
         if v is None:
@@ -189,4 +190,4 @@ class DownloadStatus(BaseModel):
     download_speed_mbps: Optional[float] = Field(None, description="Download speed in MB/s")
     estimated_remaining: Optional[float] = Field(None, description="Estimated remaining time in seconds")
     started_at: datetime = Field(..., description="Download start time")
-    completed_at: Optional[datetime] = Field(None, description="Download completion time") 
+    completed_at: Optional[datetime] = Field(None, description="Download completion time")

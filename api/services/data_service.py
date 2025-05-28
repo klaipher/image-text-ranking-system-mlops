@@ -16,7 +16,7 @@ import logging
 sys.path.append('/app/data_flows/dags/utils')
 
 from minio_client import MinIOClient
-from models.schemas import DatasetInfo, SampleData, StorageInfo, DownloadStatus
+from api_models.schemas import DatasetInfo, SampleData, StorageInfo, DownloadStatus
 
 logger = logging.getLogger(__name__)
 

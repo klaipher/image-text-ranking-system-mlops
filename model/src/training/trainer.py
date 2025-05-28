@@ -2,23 +2,22 @@
 Training module for the image-text ranking model.
 """
 
+import json
+import time
+import warnings
+from typing import Dict, List, Optional
+
+import mlflow
+import mlflow.pytorch
 import torch
 import torch.optim as optim
 from torch.utils.data import DataLoader
-import numpy as np
-from pathlib import Path
-import mlflow
-import mlflow.pytorch
 from tqdm import tqdm
-from typing import Dict, List, Tuple, Optional
-import time
-import json
-import warnings
 
-from ..models import DualEncoder, create_model
-from ..data import get_dataloaders
-from ..config import model_config, training_config, data_config
 from .metrics import compute_retrieval_metrics
+from ..config import data_config, model_config, training_config
+from ..data import get_dataloaders
+from ..models import create_model, DualEncoder
 
 
 class Trainer:

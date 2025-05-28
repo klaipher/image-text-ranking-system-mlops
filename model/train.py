@@ -10,7 +10,7 @@ import numpy as np
 from pathlib import Path
 
 from src.config import model_config, training_config, data_config
-from src.training import Trainer
+from src.training.trainer import Trainer
 from src.data import get_dataloaders
 
 

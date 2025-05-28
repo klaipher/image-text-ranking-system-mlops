@@ -15,7 +15,7 @@ def test_imports():
         from src.config import model_config, data_config, training_config
         from src.models import create_model, DualEncoder
         from src.data import TextProcessor, Flickr8kDataLoader
-        from src.training import Trainer
+        from src.training.trainer import Trainer
         from src.inference import create_predictor
         print("✅ All imports successful!")
         return True

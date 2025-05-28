@@ -365,8 +365,11 @@ services:
       MINIO_SECURE: "false"
     volumes:
       - ./model:/app/model
+      - /app/model/.venv
       - ./data:/app/data
-      - api-models:/app/models
+      - ./api:/app
+      - /app/.venv
+      - ./data_flows/dags/utils/:/app/data_flows/dags/utils/
     depends_on:
       minio:
         condition: service_healthy

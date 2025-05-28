@@ -2,20 +2,18 @@
 Dataset module for Flickr8K image-text pairs.
 """
 
-import os
-import pandas as pd
-import torch
-from torch.utils.data import Dataset, DataLoader
-from PIL import Image
-import torchvision.transforms as transforms
-from pathlib import Path
-from typing import List, Tuple, Dict, Optional
 import json
 import re
-import requests
-import zipfile
-from tqdm import tqdm
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import pandas as pd
+import torch
+import torchvision.transforms as transforms
 from datasets import load_dataset
+from PIL import Image
+from torch.utils.data import DataLoader, Dataset
+from tqdm import tqdm
 
 from ..config import data_config, model_config
 

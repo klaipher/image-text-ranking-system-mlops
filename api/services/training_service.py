@@ -2,23 +2,18 @@
 Training service for handling model training operations.
 """
 
-import os
-import sys
-import uuid
 import asyncio
+import json
+import logging
 import subprocess
 import threading
 import time
-from pathlib import Path
-from typing import Dict, Any, Optional, List
+import uuid
 from datetime import datetime
-import logging
-import json
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-# Add model src to path
-sys.path.append('/app/model/src')
-
-from models.schemas import TrainingStatus, TrainingRun, TrainingHistory
+from api_models.schemas import TrainingHistory, TrainingRun, TrainingStatus
 
 logger = logging.getLogger(__name__)
 

@@ -5,7 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.115.12",
+    "fastapi[all]>=0.115.12",
+    "image-text-ranking-model",
     "minio>=7.2.15",
     "numpy>=2.2.6",
     "pillow>=11.2.1",
@@ -13,3 +14,6 @@ dependencies = [
     "python-multipart>=0.0.20",
     "uvicorn[standard]>=0.34.2",
 ]
+
+[tool.uv.sources]
+image-text-ranking-model = { path = "../model", editable = true }
