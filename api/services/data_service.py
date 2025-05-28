@@ -394,16 +394,27 @@ class DataService:
     async def get_sample_images(self, limit: int = 20) -> List[str]:
         """Get list of sample image paths."""
         try:
-            # Get sample data
-            samples = await self.get_sample_data(limit)
+            # Get more sample data than needed to account for duplicates
+            # Since each image has ~5 captions, we need more samples to get unique images
+            extended_limit = limit * 10  # Get more samples to ensure we have enough unique images
+            samples = await self.get_sample_data(extended_limit)
             
-            # Filter for local image paths only (exclude MinIO paths)
-            image_paths = [
-                sample.image_path for sample in samples 
-                if not sample.image_path.startswith("minio://") and Path(sample.image_path).exists()
-            ]
+            # Extract unique image paths (filter duplicates)
+            seen_paths = set()
+            unique_image_paths = []
             
-            return image_paths
+            for sample in samples:
+                if (not sample.image_path.startswith("minio://") and 
+                    Path(sample.image_path).exists() and 
+                    sample.image_path not in seen_paths):
+                    seen_paths.add(sample.image_path)
+                    unique_image_paths.append(sample.image_path)
+                    
+                    # Stop once we have enough unique images
+                    if len(unique_image_paths) >= limit:
+                        break
+            
+            return unique_image_paths
             
         except Exception as e:
             logger.error(f"Failed to get sample images: {e}")

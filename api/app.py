@@ -457,13 +457,14 @@ async def get_demo_queries():
 
 
 @app.get("/demo/search")
-async def demo_search(query: str = "a dog playing", top_k: int = 5):
+async def demo_search(query: str = "a dog playing", top_k: int = 5, limit: int = 6000):
     """Demo search endpoint with default query."""
     if not model_service or not model_service.is_model_loaded():
         raise HTTPException(status_code=404, detail="No model loaded")
 
     # Get sample images for demo
-    sample_images = await data_service.get_sample_images(limit=50) if data_service else []
+    sample_images = await data_service.get_sample_images(limit=limit) if data_service else []
+
 
     if not sample_images:
         raise HTTPException(status_code=404, detail="No sample images available")
