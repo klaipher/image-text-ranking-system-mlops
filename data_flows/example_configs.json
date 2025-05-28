@@ -1,0 +1,78 @@
+{
+  "quick_test": {
+    "description": "Small test with 100 samples for quick validation",
+    "config": {
+      "dataset_mode": "count",
+      "max_samples": 100,
+      "minio_bucket": "test-bucket"
+    }
+  },
+  
+  "small_development": {
+    "description": "Small development dataset with 500 samples",
+    "config": {
+      "dataset_mode": "count",
+      "max_samples": 500,
+      "train_split": 0.7,
+      "val_split": 0.15,
+      "test_split": 0.15
+    }
+  },
+  
+  "medium_baseline": {
+    "description": "Medium dataset using 1000 samples for baseline model",
+    "config": {
+      "dataset_mode": "count",
+      "max_samples": 1000,
+      "minio_bucket": "image-text-data"
+    }
+  },
+  
+  "sample_mode_10_percent": {
+    "description": "Use 10% of the full dataset via sampling",
+    "config": {
+      "dataset_mode": "sample",
+      "sample_ratio": 0.1
+    }
+  },
+  
+  "sample_mode_25_percent": {
+    "description": "Use 25% of the full dataset for more robust training",
+    "config": {
+      "dataset_mode": "sample",
+      "sample_ratio": 0.25
+    }
+  },
+  
+  "full_production": {
+    "description": "Full Flickr8K dataset for production model",
+    "config": {
+      "dataset_mode": "full",
+      "minio_bucket": "production-data",
+      "overwrite_existing": true
+    }
+  },
+  
+  "custom_minio_config": {
+    "description": "Custom MinIO configuration with different endpoint",
+    "config": {
+      "dataset_mode": "count",
+      "max_samples": 1000,
+      "minio_endpoint": "minio.example.com:9000",
+      "minio_access_key": "your-access-key",
+      "minio_secret_key": "your-secret-key",
+      "minio_bucket": "custom-bucket",
+      "minio_secure": true
+    }
+  },
+  
+  "high_quality_images": {
+    "description": "Larger images for better model quality",
+    "config": {
+      "dataset_mode": "sample",
+      "sample_ratio": 0.15,
+      "image_size": 384,
+      "image_format": "jpg"
+    }
+  }
+} 

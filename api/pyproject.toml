@@ -1,0 +1,15 @@
+[project]
+name = "api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.12",
+    "minio>=7.2.15",
+    "numpy>=2.2.6",
+    "pillow>=11.2.1",
+    "pydantic>=2.11.5",
+    "python-multipart>=0.0.20",
+    "uvicorn[standard]>=0.34.2",
+]

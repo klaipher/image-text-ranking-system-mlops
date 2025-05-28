@@ -28,8 +28,15 @@ DEFAULT_VARIABLES = {
     # Storage Configuration
     'flickr8k_data_path': '/tmp/airflow_data/flickr8k',
     'model_data_path': '../model/data',
-    'use_object_storage': 'false',
+    'use_object_storage': 'true',
     'storage_bucket': 'image-text-data',
+    
+    # MinIO Configuration
+    'minio_endpoint': 'minio:9000',
+    'minio_access_key': 'minioadmin',
+    'minio_secret_key': 'minioadmin',
+    'minio_bucket': 'image-text-data',
+    'minio_secure': 'false',
     
     # Processing Options
     'flickr8k_image_format': 'jpg',
