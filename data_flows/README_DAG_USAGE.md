@@ -197,28 +197,6 @@ The processed data is compatible with your existing model training code:
 3. **Image Processing**: Images resized and saved in the format expected by your model
 4. **MinIO Access**: Your model training can directly access data from MinIO
 
-## Troubleshooting
-
-### Common Issues
-
-1. **MinIO Connection Failed**
-   - Check MinIO is running: `docker ps | grep minio`
-   - Verify endpoint and credentials
-
-2. **Dataset Download Failed**
-   - Check internet connection
-   - Verify Hugging Face datasets library is installed
-
-3. **Insufficient Disk Space**
-   - Reduce `max_samples` or `sample_ratio`
-   - Clean up previous runs
-
-### Debugging
-
-- Check task logs in Airflow Web UI
-- Review the generated pipeline report
-- Verify MinIO bucket contents via MinIO Console
-
 ## Performance Notes
 
 - **Full Dataset**: ~8000 images, ~40K image-caption pairs, ~2GB
